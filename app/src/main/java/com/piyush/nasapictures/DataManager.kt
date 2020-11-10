@@ -5,6 +5,8 @@ import com.piyush.nasapictures.domain.LoadPhotosUseCase
 import com.piyush.nasapictures.model.PhotoModel
 import com.piyush.nasapictures.model.Result
 
+
+// interface incase we want to create a mock of Data manager
 interface DataManager
 {
     fun loadPhotos() : LiveData<Result<List<PhotoModel>>>

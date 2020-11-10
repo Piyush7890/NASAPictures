@@ -28,15 +28,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-    dataBinding {
-        enabled true
+    buildFeatures{
+        dataBinding = true
     }
 }
 
 ext
         {
             gsonVersion = "2.8.6"
+            lifecycle_version = "2.2.0"
         }
 
 
@@ -45,11 +45,16 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation "com.google.code.gson:gson:$gsonVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1"
-
+    implementation 'com.google.android.material:material:1.2.0-alpha06'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+//    implementation 'androidx.palette:palette:1.0.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+        implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 }

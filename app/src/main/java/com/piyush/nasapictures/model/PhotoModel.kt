@@ -25,3 +25,6 @@ data class PhotoModel (
     @SerializedName("url")
     val imageUrl : String
 )
+{
+    var hasFadedIn = false
+}
