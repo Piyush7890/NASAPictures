@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data class="DetailPhotoItemBinding">
+        <variable
+            name="photo"
+            type="com.piyush.nasapictures.model.PhotoModel" />
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+        <variable
+            name="imageLoadListener"
+            type="com.piyush.nasapictures.ui.detail.ImageLoadListener" />
+        <variable
+            name="position"
+            type="int" />
+    </data>
+<ImageView
+    detailImage="@{photo.imageUrl}"
+    requestManager="@{requestManager}"
+    android:scaleType="fitCenter"
+    position="@{position}"
+    imageLoadListener="@{imageLoadListener}"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/image"
+    xmlns:android="http://schemas.android.com/apk/res/android"/>
+</layout>

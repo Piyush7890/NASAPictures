@@ -2,6 +2,7 @@ package com.piyush.nasapictures.utils
 
 import android.graphics.Bitmap
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -14,6 +15,7 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.piyush.nasapictures.R
 import com.piyush.nasapictures.model.PhotoModel
+import com.piyush.nasapictures.ui.detail.ImageLoadListener
 import kotlin.random.Random
 
 
@@ -76,4 +78,45 @@ fun View.applySystemUiVisibilityFlags(apply : Boolean)
             View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
             View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION )
     systemUiVisibility = flags
+}
+
+
+@BindingAdapter(value = ["detailImage", "requestManager", "position", "imageLoadListener"], requireAll = false)
+fun ImageView.loadDetailImage(photo: String?,
+                              requestManager: RequestManager?,
+                              position : Int,
+                              imageLoadListener : ImageLoadListener? = null)
+{
+    requestManager ?: return
+    photo ?: return
+    Log.d("HOLDER POSITION", "loadDetailImage: ${position}")
+    transitionName = photo
+    requestManager
+        .asBitmap()
+        .load(photo)
+        .listener(object  : RequestListener<Bitmap>{
+            override fun onLoadFailed(
+                e: GlideException?,
+                model: Any?,
+                target: Target<Bitmap>?,
+                isFirstResource: Boolean
+            ): Boolean {
+                imageLoadListener?.onImageLoadFailed(position, this@loadDetailImage)
+                return false
+            }
+
+            override fun onResourceReady(
+                resource: Bitmap?,
+                model: Any?,
+                target: Target<Bitmap>?,
+                dataSource: DataSource?,
+                isFirstResource: Boolean
+            ): Boolean {
+                imageLoadListener?.onImageLoaded(position, this@loadDetailImage)
+                return false
+
+            }
+
+        })
+        .into(this)
 }

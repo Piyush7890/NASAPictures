@@ -1,6 +1,6 @@
 <resources>
     <style name="Base.AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">#00000000</item>
         <item name="colorSurface">@color/colorSurface</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -11,6 +11,15 @@
     </style>
 
     <style name="AppTheme" parent="Base.AppTheme"/>
+
+
+    <style name="AppTheme.Detail">
+        <item name="android:windowEnterTransition">@transition/activity_detail_enter</item>
+        <item name="android:windowReturnTransition">@transition/activity_detail_enter</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/photo_item_transition</item>
+        <item name="android:windowSharedElementExitTransition">@transition/photo_item_transition</item>
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
 
 
 </resources>

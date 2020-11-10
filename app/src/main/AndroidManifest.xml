@@ -22,6 +22,9 @@
 
         </activity>
 
+        <activity android:name=".ui.detail.DetailActivity"
+            android:theme="@style/AppTheme.Detail"/>
+
     </application>
 
 

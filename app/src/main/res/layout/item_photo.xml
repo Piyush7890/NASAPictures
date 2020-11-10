@@ -8,11 +8,18 @@
         <variable
             name="requestManager"
             type="com.bumptech.glide.RequestManager" />
+        <variable
+            name="actionHandler"
+            type="com.piyush.nasapictures.ui.main.GridImageClickHandler" />
+        <variable
+            name="position"
+            type="int" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 <ImageView
+    android:transitionName="@{photo.imageUrl}"
     android:scaleType="centerCrop"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
