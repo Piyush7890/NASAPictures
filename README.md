@@ -6,12 +6,13 @@ An Android app that will let the user browse through a list of images parsed fro
 
 # Demo Video
 
-# Dark theme
+### Dark theme
 https://www.youtube.com/watch?v=8ZMvKcnjUT8
 
-# Light theme
+### Light theme
 https://www.youtube.com/watch?v=4fF_9bEveiY
 
+<br/><br/>
 
 # Screenshots
 <table style="width:100%">
