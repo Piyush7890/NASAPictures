@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"/>
 </com.google.android.material.appbar.AppBarLayout>
     <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
         android:background="#000000"
         android:overScrollMode="never"
         android:fadingEdge="none"

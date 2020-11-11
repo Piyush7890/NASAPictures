@@ -8,4 +8,11 @@
     <color name="textColorSecondary">#33FFFFFF</color>
     <color name="colorSurface">#000000</color>
 
+    <array name="loading_placeholders">
+        <item>#191919</item>
+        <item>#212121</item>
+        <item>#232323</item>
+        <item>#1f1f1f</item>
+        <item>#2e2e2e</item>
+    </array>
 </resources>

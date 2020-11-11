@@ -14,7 +14,6 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 
-// interface incase we want to create a mock later
 interface Repository
 {
     fun loadPhotos() : List<PhotoModel>
@@ -36,7 +35,7 @@ class DefaultRepository @Inject constructor()
             val photoDataType  =object :  TypeToken<ArrayList<PhotoModel>>(){}.type
             val data = Gson().fromJson<ArrayList<PhotoModel>>(reader, photoDataType)
             //we want to show the latest photos first
-            data.sortedByDescending { it.date.toDate() }
+
          return data
     }
 

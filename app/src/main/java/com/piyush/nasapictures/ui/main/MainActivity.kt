@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity(), GridImageClickHandler
                 is Result.Success ->
                 {
                     binding.progress.fadeOut()
+                    binding.list.fadeIn()
                     (adapter).items = it.data
                 }
             }

@@ -59,7 +59,7 @@ fun ImageView.setImage(photo: PhotoModel?, requestManager: RequestManager?)
             ): Boolean {
                 if(!photo.hasFadedIn) {
                     photo.hasFadedIn = true
-                    AnimationUtils.startSaturationAnimation(this@setImage, 1000)
+                    AnimationUtils.startSaturationAnimation(this@setImage, 2000)
                 }
                 return false
             }

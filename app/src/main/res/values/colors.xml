@@ -11,11 +11,13 @@
     <color name="textColorSecondary">#33000000</color>
     <color name="colorSurface">#FFFFFF</color>
 
+
     <array name="loading_placeholders">
-        <item>#191919</item>
-        <item>#212121</item>
-        <item>#232323</item>
-        <item>#1f1f1f</item>
-        <item>#2e2e2e</item>
+        <item>#fff5f5f5</item>
+        <item>#ffeeeeee</item>
+        <item>#ffe0e0e0</item>
+        <item>#e6e6e6</item>
+        <item>#dbdbdb</item>
     </array>
+
 </resources>
