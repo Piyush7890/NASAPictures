@@ -12,9 +12,9 @@ https://www.youtube.com/watch?v=4fF_9bEveiY
 
 <table style="width:100%">
   <tr>
-    <td><img src="app/src/main/1.png"/></td>
-    <td><img src="app/src/main/2.png"/></td>
-    <td><img src="app/src/main/3.png"/></td>
-    <td><img src="app/src/main/4.png"/></td>
+    <td><img src="app/src/main/4.jpeg"/></td>
+    <td><img src="app/src/main/3.jpeg"/></td>
+    <td><img src="app/src/main/2.jpeg"/></td>
+    <td><img src="app/src/main/1.jpeg"/></td>
   </tr>
 </table>
