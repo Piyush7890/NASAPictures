@@ -12,13 +12,4 @@ class DetailViewModel @Inject constructor(private val loadPhotosUseCase: LoadPho
 
     fun loadPhotos()  = loadPhotosUseCase.observe()
 
-//    private val _currentPositionLiveData = MutableLiveData<Int>()
-//
-//    val currentPositionLiveData : LiveData<Int>
-//        get() = _currentPositionLiveData
-//
-//    fun setPosition(position: Int)
-//    {
-//        _currentPositionLiveData.value = position
-//    }
 }
