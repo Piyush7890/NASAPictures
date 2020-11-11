@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import com.piyush.nasapictures.domain.LoadPhotosUseCase
 import com.piyush.nasapictures.model.PhotoModel
 import com.piyush.nasapictures.model.Result
+import javax.inject.Inject
+import javax.inject.Singleton
 
 
 // interface incase we want to create a mock of Data manager
@@ -14,7 +16,9 @@ interface DataManager
 
 
 //I have created this class in case if we want to save the data to the database first
-class RealDataManager(private val loadPhotosUseCase: LoadPhotosUseCase) : DataManager
+@Singleton
+class RealDataManager @Inject constructor(private val loadPhotosUseCase: LoadPhotosUseCase)
+    : DataManager
 {
 
     // by lazy because we want to execute this only for the first time

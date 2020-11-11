@@ -3,12 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data class="ActivityDetailBinding"/>
     <FrameLayout
+        android:background="@android:color/black"
         systemUiVisibilityFlags="@{true}"
         android:id="@+id/parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
 <androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:background="@android:color/black"
+    android:id="@+id/sheet_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <androidx.viewpager2.widget.ViewPager2
@@ -17,19 +19,21 @@
         android:overScrollMode="never"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
+    <View
+        android:id="@+id/scrim"
+        android:alpha="0"
+        android:background="#d9000000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 <include
-    app:behavior_peekHeight="56dp"
-    android:layout_marginStart="12dp"
-    android:layout_marginEnd="12dp"
+
     layout="@layout/details_sheet"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     android:id="@+id/details_include"
-    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+
     />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
         <View
+            android:background="@android:color/black"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:id="@+id/bottom_scrim"

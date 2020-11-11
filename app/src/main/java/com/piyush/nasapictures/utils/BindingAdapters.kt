@@ -2,11 +2,9 @@ package com.piyush.nasapictures.utils
 
 import android.graphics.Bitmap
 import android.graphics.drawable.ColorDrawable
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.GenericTransitionOptions
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -16,6 +14,7 @@ import com.bumptech.glide.request.target.Target
 import com.piyush.nasapictures.R
 import com.piyush.nasapictures.model.PhotoModel
 import com.piyush.nasapictures.ui.detail.ImageLoadListener
+import com.piyush.nasapictures.ui.widget.FadeInFadeOutTextView
 import kotlin.random.Random
 
 
@@ -117,4 +116,10 @@ fun ImageView.loadDetailImage(photo: String?,
 
         })
         .into(this)
+}
+
+@BindingAdapter("textToAnimate")
+fun FadeInFadeOutTextView.setTextToAnimate(textToAnimate : String?)
+{
+    setTextToAnimate(textToAnimate)
 }

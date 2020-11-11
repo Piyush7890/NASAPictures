@@ -30,6 +30,9 @@
         android:layout_height="wrap_content"/>
 </com.google.android.material.appbar.AppBarLayout>
     <androidx.recyclerview.widget.RecyclerView
+        android:background="#000000"
+        android:overScrollMode="never"
+        android:fadingEdge="none"
         android:clipToPadding="false"
         android:id="@+id/list"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"

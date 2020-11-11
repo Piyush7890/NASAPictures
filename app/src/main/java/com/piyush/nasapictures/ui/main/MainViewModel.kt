@@ -4,10 +4,10 @@ import androidx.lifecycle.ViewModel
 import com.piyush.nasapictures.DataManager
 import com.piyush.nasapictures.RealDataManager
 import com.piyush.nasapictures.domain.LoadPhotosUseCase
+import javax.inject.Inject
 
-class MainViewModel() : ViewModel() {
+class MainViewModel @Inject constructor(private val dataManager: DataManager): ViewModel() {
 
-    private val dataManager: DataManager = RealDataManager(LoadPhotosUseCase())
     fun loadPhotos() = dataManager.loadPhotos()
 
 }

@@ -121,7 +121,7 @@ object AnimationUtils{
             val ofArgb = ObjectAnimator.ofArgb(
                 view,
                 "backgroundColor",
-                (view.background as ColorDrawable?)?.color ?: Color.TRANSPARENT,
+                (view.background as ColorDrawable?)?.color ?: Color.BLACK,
                 to
             )
             ofArgb.duration = 400L

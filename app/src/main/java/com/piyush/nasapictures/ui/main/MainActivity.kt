@@ -1,21 +1,19 @@
 package com.piyush.nasapictures.ui.main
 
-import android.annotation.TargetApi
 import android.app.ActivityOptions
 import android.app.SharedElementCallback
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.transition.Transition
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updatePadding
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.piyush.nasapictures.App
 import com.piyush.nasapictures.R
 import com.piyush.nasapictures.databinding.ActivityMainBinding
 import com.piyush.nasapictures.model.Result
@@ -24,21 +22,29 @@ import com.piyush.nasapictures.utils.AnimationUtils.fadeIn
 import com.piyush.nasapictures.utils.AnimationUtils.fadeOut
 import com.piyush.nasapictures.utils.Constants
 import com.piyush.nasapictures.utils.updateHeight
+import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity(), GridImageClickHandler
 {
     private lateinit var binding : ActivityMainBinding
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
     private lateinit var viewModel  : MainViewModel
+    private lateinit var adapter  : PhotosAdapter
     private var sharedElementPosition = RecyclerView.NO_POSITION
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,
             R.layout.activity_main
         )
-
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        binding.list.adapter = PhotosAdapter(Glide.with(this), this)
+        window.exitTransition = null
+        (application as App).component!!.inject(this)
+        viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+        adapter = PhotosAdapter(Glide.with(this), this)
+        binding.list.adapter = adapter
         viewModel.loadPhotos().observe(this, Observer {
             when(it)
             {
@@ -50,7 +56,7 @@ class MainActivity : AppCompatActivity(), GridImageClickHandler
                 is Result.Success ->
                 {
                     binding.progress.fadeOut()
-                    (binding.list.adapter as PhotosAdapter).items = it.data
+                    (adapter).items = it.data
                 }
             }
         })
@@ -68,14 +74,12 @@ class MainActivity : AppCompatActivity(), GridImageClickHandler
                     names: MutableList<String?>,
                     sharedElements: MutableMap<String?, View?>
                 ) {
-                    Toast.makeText(this@MainActivity, sharedElements.isEmpty().toString(), Toast.LENGTH_SHORT).show()
-                    if (sharedElementPosition!=RecyclerView.NO_POSITION) {
+                    if (sharedElementPosition!=RecyclerView.NO_POSITION && sharedElementPosition<adapter.items.size) {
                         // Locate the ViewHolder for the clicked position.
                         val selectedViewHolder = binding.list.findViewHolderForAdapterPosition(sharedElementPosition) as PhotoViewHolder?
                             ?: return
                         val transitionName = selectedViewHolder.binding.image.transitionName
                         names.clear()
-                        Toast.makeText(this@MainActivity, transitionName, Toast.LENGTH_SHORT).show()
                         names.add(transitionName)
                         // Map the first shared element name to the child ImageView.
                         sharedElements.clear()
@@ -97,11 +101,21 @@ class MainActivity : AppCompatActivity(), GridImageClickHandler
     override fun onActivityReenter(resultCode: Int, data: Intent?) {
         sharedElementPosition = DetailActivity.getViewPagerPosition(resultCode, data)
         if (sharedElementPosition != RecyclerView.NO_POSITION) {
+            postponeEnterTransition()
+            binding.list.addOnLayoutChangeListener(object  : View.OnLayoutChangeListener
+            {
+                override fun onLayoutChange(
+                    p0: View?, p1: Int, p2: Int, p3: Int,
+                    p4: Int, p5: Int, p6: Int, p7: Int, p8: Int) {
+                    binding.list.removeOnLayoutChangeListener(this)
+                    startPostponedEnterTransition()
+                }
+            })
             binding.list.scrollToPosition(sharedElementPosition)
         }
+        }
+
+ }
 
 
-    }
 
-
-}

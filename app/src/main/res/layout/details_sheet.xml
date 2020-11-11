@@ -7,19 +7,21 @@
             type="com.piyush.nasapictures.model.PhotoModel" />
     </data>
 <com.google.android.material.card.MaterialCardView
+    app:behavior_peekHeight="56dp"
+    app:cardBackgroundColor="@android:color/black"
+    android:layout_marginStart="12dp"
+    app:behavior_hideable="false"
+    android:layout_marginEnd="12dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    app:cardElevation="16dp"
     android:clickable="true"
     app:rippleColor="@android:color/transparent"
     android:id="@+id/card"
     app:cardCornerRadius="12dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
 <LinearLayout
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
     android:theme="@style/ThemeOverlay.AppTheme.Detail"
     android:id="@+id/parent"
     android:orientation="vertical"
@@ -27,32 +29,70 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:bind="http://schemas.android.com/apk/res-auto">
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     android:gravity="center_vertical"
+
     android:id="@+id/title"
     bind:layout_constraintTop_toTopOf="parent"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="56dp">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        bind:layout_constraintGuide_begin="16dp" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        bind:layout_constraintGuide_end="16dp" />
     <ImageView
+        bind:layout_constraintStart_toStartOf="@id/guideline_start"
+        bind:layout_constraintTop_toTopOf="parent"
+        bind:layout_constraintBottom_toBottomOf="parent"
         android:src="@drawable/ic_baseline_keyboard_arrow_up"
         android:id="@+id/arrow_up"
         android:layout_width="24dp"
         android:layout_height="24dp"/>
-    <TextView
+    <com.piyush.nasapictures.ui.widget.FadeInFadeOutTextView
+        bind:layout_constraintStart_toEndOf="@id/arrow_up"
+        bind:layout_constraintTop_toTopOf="parent"
+        bind:layout_constraintBottom_toBottomOf="parent"
+        bind:layout_constraintEnd_toEndOf="@id/guideline_end"
         android:layout_marginStart="16dp"
         style="@style/AutoScrollText"
         android:fontFamily="sans-serif-medium"
         android:textAppearance="@style/TextAppearance.Material.Body1"
         android:textColor="?android:textColorPrimary"
-        android:text="@{photo.title}"
+        textToAnimate="@{photo.title}"
         android:layout_gravity="center"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"/>
-</LinearLayout>
+    <View
+        bind:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/divider"
+        android:background="#1affffff"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.core.widget.NestedScrollView
+        android:overScrollMode="never"
+        android:fadingEdge="none"
+        android:id="@+id/scrollView"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
     <com.piyush.nasapictures.ui.widget.InfoView
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         bind:label="@string/copyright"
         bind:value="@{photo.copyright}"
@@ -77,11 +117,14 @@
         android:layout_height="wrap_content"/>
     <com.piyush.nasapictures.ui.widget.InfoView
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:layout_width="match_parent"
         bind:label="@string/service_version"
         bind:value="@{photo.serviceVersion}"
         android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
 </LinearLayout>
-    </ScrollView>
 </com.google.android.material.card.MaterialCardView>
 </layout>

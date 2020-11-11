@@ -36,4 +36,9 @@ class DetailAdapter(private val requestManager: RequestManager,
         viewHolders.remove(holder)
     }
 
+    fun findViewHolderWithTag(tag : String)=
+        viewHolders
+        .firstOrNull { it.itemView.tag== tag } as DetailPhotoViewHolder?
+
+
 }
