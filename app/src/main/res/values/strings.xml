@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">NASA Pictures</string>
+    <string name="copyright">Copyright</string>
+    <string name="date">Date</string>
+    <string name="explanation">Explanation</string>
+    <string name="media_type">Media type</string>
+    <string name="service_version">Service version</string>
+
 </resources>

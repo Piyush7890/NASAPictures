@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <data class="ActivityDetailBinding"/>
-<FrameLayout
-    systemUiVisibilityFlags="@{true}"
+    <FrameLayout
+        systemUiVisibilityFlags="@{true}"
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     android:background="@android:color/black"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <androidx.viewpager2.widget.ViewPager2
@@ -14,5 +18,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-</FrameLayout>
+<include
+    app:behavior_peekHeight="56dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    layout="@layout/details_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/details_include"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <View
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:id="@+id/bottom_scrim"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+    </FrameLayout>
 </layout>

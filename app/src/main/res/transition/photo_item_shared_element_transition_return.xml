@@ -5,5 +5,8 @@
     android:transitionOrdering="together">
     <changeBounds />
     <changeImageTransform />
-    <arcMotion />
+    <arcMotion
+        android:minimumVerticalAngle="55"
+        android:minimumHorizontalAngle="35"
+        android:maximumAngle="45"/>
 </transitionSet>

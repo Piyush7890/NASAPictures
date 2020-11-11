@@ -15,6 +15,8 @@
             type="int" />
     </data>
 <ImageView
+    android:transitionName="@{photo.imageUrl}"
+    android:tag="@{Integer.toString(position)}"
     detailImage="@{photo.imageUrl}"
     requestManager="@{requestManager}"
     android:scaleType="fitCenter"

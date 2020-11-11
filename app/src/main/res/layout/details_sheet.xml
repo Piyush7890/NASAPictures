@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="photo"
+            type="com.piyush.nasapictures.model.PhotoModel" />
+    </data>
+<com.google.android.material.card.MaterialCardView
+    android:clickable="true"
+    app:rippleColor="@android:color/transparent"
+    android:id="@+id/card"
+    app:cardCornerRadius="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<LinearLayout
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:theme="@style/ThemeOverlay.AppTheme.Detail"
+    android:id="@+id/parent"
+    android:orientation="vertical"
+    bind:layout_behavior="@string/bottom_sheet_behavior"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+<LinearLayout
+    android:gravity="center_vertical"
+    android:id="@+id/title"
+    bind:layout_constraintTop_toTopOf="parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="56dp">
+    <ImageView
+        android:src="@drawable/ic_baseline_keyboard_arrow_up"
+        android:id="@+id/arrow_up"
+        android:layout_width="24dp"
+        android:layout_height="24dp"/>
+    <TextView
+        android:layout_marginStart="16dp"
+        style="@style/AutoScrollText"
+        android:fontFamily="sans-serif-medium"
+        android:textAppearance="@style/TextAppearance.Material.Body1"
+        android:textColor="?android:textColorPrimary"
+        android:text="@{photo.title}"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
+    <com.piyush.nasapictures.ui.widget.InfoView
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        bind:label="@string/copyright"
+        bind:value="@{photo.copyright}"
+        android:layout_height="wrap_content"/>
+    <com.piyush.nasapictures.ui.widget.InfoView
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        bind:label="@string/date"
+        bind:value="@{photo.date}"
+        android:layout_height="wrap_content"/>
+    <com.piyush.nasapictures.ui.widget.InfoView
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        bind:label="@string/explanation"
+        bind:value="@{photo.explanation}"
+        android:layout_height="wrap_content"/>
+    <com.piyush.nasapictures.ui.widget.InfoView
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        bind:label="@string/media_type"
+        bind:value="@{photo.mediaType}"
+        android:layout_height="wrap_content"/>
+    <com.piyush.nasapictures.ui.widget.InfoView
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        bind:label="@string/service_version"
+        bind:value="@{photo.serviceVersion}"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
+    </ScrollView>
+</com.google.android.material.card.MaterialCardView>
+</layout>

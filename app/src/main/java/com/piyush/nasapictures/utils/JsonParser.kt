@@ -8,6 +8,7 @@ import com.piyush.nasapictures.BuildConfig
 import com.piyush.nasapictures.model.PhotoModel
 import java.io.InputStreamReader
 import java.io.Reader
+import kotlin.jvm.Throws
 
 
 object JsonParser

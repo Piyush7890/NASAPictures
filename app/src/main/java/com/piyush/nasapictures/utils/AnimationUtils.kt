@@ -4,13 +4,19 @@ import android.R
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.content.Context
+import android.graphics.Color
 import android.graphics.ColorMatrixColorFilter
+import android.graphics.drawable.ColorDrawable
 import android.view.View
+import android.view.Window
 import android.view.animation.AnimationUtils
+import android.view.animation.Interpolator
 import android.widget.ImageView
 import androidx.core.view.animation.PathInterpolatorCompat
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
+import com.google.android.material.card.MaterialCardView
 
 
 object AnimationUtils{
@@ -79,5 +85,51 @@ object AnimationUtils{
             }).start()
     }
 
+    var ofArgb : ValueAnimator? = null
+
+    fun animateCardBackgroundColor(
+        view: MaterialCardView,
+        to: Int,
+        animInterpolator: Interpolator = fastOutSlowInInterpolator,
+        animate: Boolean = true,
+        duration: Long = 400L
+    ) {
+        if(view.cardBackgroundColor.defaultColor==to)
+            return
+        ofArgb?.cancel()
+        if (animate) {
+            ofArgb = ObjectAnimator.ofArgb(view, "cardBackgroundColor",
+                view.cardBackgroundColor.defaultColor, to
+            ).apply {
+                this.duration = duration
+                interpolator = animInterpolator
+                start()
+            }
+            return
+        }
+        view.setBackgroundColor(to)
+    }
+
+
+    fun animateBackgroundColor(
+        view: View,
+        to: Int,
+        animInterpolator: Interpolator = fastOutSlowInInterpolator,
+        animate: Boolean = true
+    ) {
+        if (animate) {
+            val ofArgb = ObjectAnimator.ofArgb(
+                view,
+                "backgroundColor",
+                (view.background as ColorDrawable?)?.color ?: Color.TRANSPARENT,
+                to
+            )
+            ofArgb.duration = 400L
+            ofArgb.interpolator = animInterpolator
+            ofArgb.start()
+            return
+        }
+        view.setBackgroundColor(to)
+    }
 
 }

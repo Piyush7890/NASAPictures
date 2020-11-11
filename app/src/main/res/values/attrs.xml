@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="InfoView">
+        <attr name="label" format="reference|string"/>
+        <attr name="value"  format="reference|string"/>
+    </declare-styleable>
+
+</resources>

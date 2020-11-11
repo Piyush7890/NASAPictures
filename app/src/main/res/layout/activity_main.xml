@@ -3,15 +3,28 @@
     <data class="ActivityMainBinding"/>
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/parent"
     systemUiVisibilityFlags="@{true}"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appbar"
+    android:elevation="4dp"
+    android:background="@color/colorSurface"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <View
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:id="@+id/status_bar_scrim"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
     <androidx.appcompat.widget.Toolbar
+        android:elevation="4dp"
+        app:title="@string/app_name"
+        app:titleTextColor="?android:textColorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

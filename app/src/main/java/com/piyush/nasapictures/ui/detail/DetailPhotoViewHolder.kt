@@ -14,7 +14,6 @@ class DetailPhotoViewHolder(val binding: DetailPhotoItemBinding) : RecyclerView.
         binding.requestManager = requestManager
         binding.photo = photoModel
         binding.position = adapterPosition
-        Log.d("bind", "loadDetailImage: $adapterPosition")
         binding.executePendingBindings()
     }
 }

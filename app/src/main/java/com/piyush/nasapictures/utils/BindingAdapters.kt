@@ -89,8 +89,6 @@ fun ImageView.loadDetailImage(photo: String?,
 {
     requestManager ?: return
     photo ?: return
-    Log.d("HOLDER POSITION", "loadDetailImage: ${position}")
-    transitionName = photo
     requestManager
         .asBitmap()
         .load(photo)

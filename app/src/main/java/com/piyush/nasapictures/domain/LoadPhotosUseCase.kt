@@ -15,7 +15,7 @@ class LoadPhotosUseCase : MediatorUseCase<Unit, List<PhotoModel>>()
         result.value = Result.Loading
         AsyncScheduler.execute {
             try {
-                //we want to show latest photos first
+                //we want to show the latest photos first
                 val data = JsonParser.parseData().sortedByDescending { it.date.toDate() }
                 result.postValue(Result.Success(data))
             }catch (e : Exception)

@@ -15,11 +15,61 @@
 
     <style name="AppTheme.Detail">
         <item name="android:windowEnterTransition">@transition/activity_detail_enter</item>
-        <item name="android:windowReturnTransition">@transition/activity_detail_enter</item>
-        <item name="android:windowSharedElementEnterTransition">@transition/photo_item_transition</item>
-        <item name="android:windowSharedElementExitTransition">@transition/photo_item_transition</item>
+        <item name="android:windowReturnTransition">@transition/activity_detail_return</item>
+        <item name="android:windowExitTransition">@transition/activity_detail_return</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/photo_item_shared_element_transition</item>
+        <item name="android:windowSharedElementExitTransition">@transition/photo_item_shared_element_transition_return</item>
         <item name="android:windowBackground">@android:color/black</item>
     </style>
 
 
+
+    <style name="ThemeOverlay.AppTheme.Detail" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">#99ffffff</item>
+    </style>
+
+
+    <style name="DetailInfoLabel">
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:textAppearance">@style/TextAppearance.Material.Caption</item>
+    </style>
+
+    <style name="DetailInfoValue">
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textAppearance">@style/TextAppearance.Material.Body1</item>
+    </style>
+
+
+    <style name="TextAppearance.Material.Caption" parent="@style/TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">13.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextAppearance.Material.Body1" parent="@style/TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+
+    <style name="AutoScrollText">
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:freezesText">true</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:scrollHorizontally">true</item>
+    </style>
 </resources>
