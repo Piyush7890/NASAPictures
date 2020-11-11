@@ -19,6 +19,7 @@ open class LoadPhotosUseCase @Inject constructor(private val repository: Reposit
         result.value = Result.Loading
         DefaultScheduler.execute {
             try {
+                //latest image first
                 val data = repository.loadPhotos().sortedByDescending { it.date.toDate() }
                 result.postValue(Result.Success(data))
             }catch (e : Exception)

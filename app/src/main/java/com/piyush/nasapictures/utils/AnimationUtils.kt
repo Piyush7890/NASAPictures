@@ -1,17 +1,13 @@
 package com.piyush.nasapictures.utils
 
-import android.R
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
-import android.content.Context
 import android.graphics.Color
 import android.graphics.ColorMatrixColorFilter
 import android.graphics.drawable.ColorDrawable
 import android.view.View
-import android.view.Window
-import android.view.animation.AnimationUtils
 import android.view.animation.Interpolator
 import android.widget.ImageView
 import androidx.core.view.animation.PathInterpolatorCompat
@@ -21,7 +17,7 @@ import com.google.android.material.card.MaterialCardView
 
 object AnimationUtils{
 
-    val fastOutSlowInInterpolator by lazy {
+    val fastOutSlowInInterpolator: Interpolator by lazy {
         PathInterpolatorCompat.create(0.4f, 0.0f, 0.2f, 1.0f)
     }
 

@@ -1,18 +1,13 @@
 package com.piyush.nasapictures.utils
 
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.Drawable
-import android.view.animation.Interpolator
 import androidx.core.math.MathUtils
 import androidx.palette.graphics.Palette
-import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import com.google.android.material.card.MaterialCardView
 import dev.jorgecastillo.androidcolorx.library.shades
 import java.util.concurrent.ConcurrentHashMap
 

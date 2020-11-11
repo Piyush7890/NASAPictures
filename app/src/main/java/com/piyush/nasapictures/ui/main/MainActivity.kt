@@ -5,6 +5,7 @@ import android.app.SharedElementCallback
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updatePadding
 import androidx.databinding.DataBindingUtil
@@ -58,6 +59,12 @@ class MainActivity : AppCompatActivity(), GridImageClickHandler
                     binding.progress.fadeOut()
                     binding.list.fadeIn()
                     (adapter).items = it.data
+                }
+
+                is Result.Error ->
+                {
+                    binding.progress.fadeOut()
+                    Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
         })

@@ -3,10 +3,8 @@ package com.piyush.nasapictures.ui.detail
 import android.app.Activity
 import android.app.SharedElementCallback
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.updatePadding
 import androidx.databinding.DataBindingUtil
@@ -20,11 +18,8 @@ import com.piyush.nasapictures.App
 import com.piyush.nasapictures.R
 import com.piyush.nasapictures.databinding.ActivityDetailBinding
 import com.piyush.nasapictures.model.Result
-import com.piyush.nasapictures.ui.main.MainViewModel
-import com.piyush.nasapictures.ui.main.PhotosAdapter
 import com.piyush.nasapictures.utils.*
 import javax.inject.Inject
-import kotlin.math.roundToInt
 
 
 class DetailActivity : AppCompatActivity(), ImageLoadListener {
@@ -145,7 +140,6 @@ class DetailActivity : AppCompatActivity(), ImageLoadListener {
 
     override fun onImageLoaded(photoModel: Int, view: View) {
         if(photoModel == position) {
-//            setUpTransition(view)
             startPostponedEnterTransition()
         }
     }
