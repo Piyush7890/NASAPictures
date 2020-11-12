@@ -9,6 +9,6 @@ import javax.inject.Singleton
 @Component(modules = [DataManagerModule::class, ViewModelModule::class])
 interface AppComponent
 {
-    fun inject(activity: MainActivity)
-    fun inject(loginActivity: DetailActivity)
+    fun inject(mainActivity: MainActivity)
+    fun inject(detailActivity: DetailActivity)
 }
