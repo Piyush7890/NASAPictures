@@ -66,7 +66,7 @@ class MainViewModelTest {
     object IsLatestImageFirstMatcher  : TypeSafeMatcher<List<PhotoModel>>() {
 
             override fun describeTo(description: Description) {
-                description.appendText("describe the error has you like more")
+                description.appendText("The photos are not sorted according to the dates")
             }
 
             override fun matchesSafely(item: List<PhotoModel>): Boolean {
