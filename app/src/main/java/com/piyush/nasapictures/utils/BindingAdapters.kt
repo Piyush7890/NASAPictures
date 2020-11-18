@@ -117,9 +117,3 @@ fun ImageView.loadDetailImage(photo: String?,
         })
         .into(this)
 }
-
-@BindingAdapter("textToAnimate")
-fun FadeInFadeOutTextView.setTextToAnimate(textToAnimate : String?)
-{
-    setTextToAnimate(textToAnimate)
-}

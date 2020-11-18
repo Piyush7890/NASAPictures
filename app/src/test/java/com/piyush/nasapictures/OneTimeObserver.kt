@@ -2,7 +2,8 @@ package com.piyush.nasapictures
 
 import androidx.lifecycle.*
 
-class OneTimeObserver<T>(private val handler: (T) -> Unit) : Observer<T>, LifecycleOwner {
+class OneTimeObserver<T>(private val handler: (T) -> Unit) : Observer<T>,
+    LifecycleOwner {
     private val lifecycle = LifecycleRegistry(this)
 
     init {

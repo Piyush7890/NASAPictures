@@ -19,8 +19,7 @@ interface Repository
 
 
 @Singleton
-class DefaultRepository @Inject constructor()
-    : Repository
+class DefaultRepository @Inject constructor() : Repository
 {
 
 

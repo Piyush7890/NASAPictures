@@ -58,6 +58,7 @@ class DetailActivity : AppCompatActivity(), ImageLoadListener {
     private var position : Int = 0
     private lateinit var adapter  : DetailAdapter
     private lateinit var behavior : BottomSheetBehavior<*>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,
@@ -82,7 +83,10 @@ class DetailActivity : AppCompatActivity(), ImageLoadListener {
                 {
                     (binding.viewpager.adapter as DetailAdapter).items = it.data
                         binding.viewpager.setCurrentItem(position, false)
-
+                }
+                is Result.Error ->
+                {
+                    finish()
                 }
             }
         })
@@ -126,7 +130,7 @@ class DetailActivity : AppCompatActivity(), ImageLoadListener {
             }
 
             PaletteExtensions.getColorForImage(photo.imageUrl, Glide.with(this@DetailActivity)) {
-                AnimationUtils.animateCardBackgroundColor(binding.detailsInclude.card, it!!)
+                AnimationUtils.animateCardBackgroundColor(binding.detailsInclude.card, it)
                 AnimationUtils.animateBackgroundColor(binding.bottomScrim, it)
             }
         }

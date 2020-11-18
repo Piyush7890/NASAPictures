@@ -1,6 +1,5 @@
 package com.piyush.nasapictures.ui.detail
 
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.piyush.nasapictures.databinding.DetailPhotoItemBinding
@@ -11,9 +10,11 @@ class DetailPhotoViewHolder(val binding: DetailPhotoItemBinding) : RecyclerView.
 {
     fun bind(requestManager: RequestManager, photoModel: PhotoModel)
     {
-        binding.requestManager = requestManager
-        binding.photo = photoModel
-        binding.position = adapterPosition
-        binding.executePendingBindings()
+        binding.apply {
+            this.requestManager = requestManager
+            photo = photoModel
+            position = adapterPosition
+            executePendingBindings()
+        }
     }
 }

@@ -13,7 +13,7 @@ class DetailAdapter(private val requestManager: RequestManager,
     : BaseAdapter<PhotoModel, DetailPhotoViewHolder>()
 {
 
-    val viewHolders = HashSet<DetailPhotoViewHolder>()
+    private val viewHolders = HashSet<DetailPhotoViewHolder>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailPhotoViewHolder {
@@ -38,7 +38,7 @@ class DetailAdapter(private val requestManager: RequestManager,
 
     fun findViewHolderWithTag(tag : String)=
         viewHolders
-        .firstOrNull { it.itemView.tag== tag } as DetailPhotoViewHolder?
+        .firstOrNull { it.itemView.tag== tag }
 
 
 }

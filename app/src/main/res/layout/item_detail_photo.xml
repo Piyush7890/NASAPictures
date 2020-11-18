@@ -16,6 +16,7 @@
     </data>
 
 <ImageView
+    android:contentDescription="@{photo.title}"
     android:background="@android:color/transparent"
     android:transitionName="@{photo.imageUrl}"
     android:tag="@{Integer.toString(position)}"

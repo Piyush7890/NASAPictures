@@ -9,13 +9,11 @@
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">@bool/use_light_status</item>
-
     </style>
 
     <style name="AppTheme" parent="Base.AppTheme"/>
 
-
-    <style name="AppTheme.Detail">
+    <style name="AppTheme.Translucent">
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowIsFloating">false</item>
@@ -23,6 +21,10 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:colorBackground">@android:color/transparent</item>
+    </style>
+
+
+    <style name="AppTheme.Translucent.Detail">
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
         <item name="android:windowEnterTransition">@transition/activity_detail_enter</item>
         <item name="android:windowReturnTransition">@transition/activity_detail_return</item>

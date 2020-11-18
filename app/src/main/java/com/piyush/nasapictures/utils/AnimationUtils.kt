@@ -81,7 +81,7 @@ object AnimationUtils{
             }).start()
     }
 
-    var ofArgb : ValueAnimator? = null
+    private var ofArgb : ValueAnimator? = null
 
     fun animateCardBackgroundColor(
         view: MaterialCardView,

@@ -9,9 +9,6 @@
             name="requestManager"
             type="com.bumptech.glide.RequestManager" />
         <variable
-            name="actionHandler"
-            type="com.piyush.nasapictures.ui.main.GridImageClickHandler" />
-        <variable
             name="position"
             type="int" />
     </data>

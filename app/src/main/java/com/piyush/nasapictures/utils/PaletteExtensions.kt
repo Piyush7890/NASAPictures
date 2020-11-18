@@ -28,7 +28,9 @@ object PaletteExtensions
     }
 
 
-    fun getColorForImage(url : String, requestManager: RequestManager,  runAfterColorFound: (Int?) -> Unit)
+    fun getColorForImage(url : String,
+                         requestManager: RequestManager,
+                         runAfterColorFound: (Int) -> Unit)
     {
         if(colorCache.containsKey(url))
             runAfterColorFound(colorCache[url]!!)
@@ -96,9 +98,7 @@ object PaletteExtensions
     internal class PaletteFilter : Palette.Filter {
 
         override fun isAllowed(rgb: Int, hsl: FloatArray): Boolean {
-            return !(!isBlack(hsl) and isNearRedLine(
-                hsl
-            ))
+            return !(!isBlack(hsl) and isNearRedLine(hsl))
         }
 
         companion object {

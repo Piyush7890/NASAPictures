@@ -8,43 +8,38 @@ import android.content.Context
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.View
+import androidx.appcompat.widget.AppCompatTextView
 import com.piyush.nasapictures.utils.AnimationUtils
 
-class FadeInFadeOutTextView : androidx.appcompat.widget.AppCompatTextView {
-    private var mSubtitleAnimator =
+class FadeInFadeOutTextView  @JvmOverloads constructor(context: Context,
+                                                       attrs: AttributeSet?=null,
+                                                       defStyleAttr: Int = 0)
+    : AppCompatTextView(context, attrs, defStyleAttr) {
+
+    private var textFadeAnimator =
         ObjectAnimator.ofFloat(this, View.ALPHA, 1f, 0f, 1f).apply {
             duration = 2L * /*getLongAnimTime(this@FadeInFadeOutTextView.resources)*/200
             interpolator = AnimationUtils.fastOutSlowInInterpolator
 
         }
 
-    private var mNextSubtitle: CharSequence? = null
+    private var nextText: CharSequence? = null
 
-    constructor(context: Context) : this(context,null)
-
-    constructor(
-        context: Context,
-        attrs: AttributeSet?
-    ) : this(context, attrs,0)
-
-    constructor(
-        context: Context, attrs: AttributeSet?,
-        defStyleAttr: Int
-    ) : super(context, attrs, defStyleAttr) {
+    init {
         val listener = AnimatorListener()
-        mSubtitleAnimator.addUpdateListener(listener)
-        mSubtitleAnimator.addListener(listener)
+        textFadeAnimator.addUpdateListener(listener)
+        textFadeAnimator.addListener(listener)
     }
 
 
-    fun setTextToAnimate(subtitle : String?)
+    fun setTextToAnimate(textToAnimate : String?)
     {
-        if (TextUtils.equals(text, subtitle)) {
+        if (TextUtils.equals(text, textToAnimate)) {
             return
         }
-        mNextSubtitle = subtitle
-        if (!mSubtitleAnimator.isRunning) {
-            mSubtitleAnimator.start()
+        nextText = textToAnimate
+        if (!textFadeAnimator.isRunning) {
+            textFadeAnimator.start()
         }
     }
 
@@ -63,7 +58,7 @@ class FadeInFadeOutTextView : androidx.appcompat.widget.AppCompatTextView {
 
         override fun onAnimationEnd(animator: Animator) {
             ensureTextUpdated()
-            if (mNextSubtitle != null) {
+            if (nextText != null) {
                 mTextUpdated = false
                 animator.start()
             }
@@ -71,9 +66,9 @@ class FadeInFadeOutTextView : androidx.appcompat.widget.AppCompatTextView {
 
         private fun ensureTextUpdated() {
             if (!mTextUpdated) {
-                if (mNextSubtitle != null) {
-                    super@FadeInFadeOutTextView.setText(mNextSubtitle)
-                    mNextSubtitle = null
+                if (nextText != null) {
+                    super@FadeInFadeOutTextView.setText(nextText)
+                    nextText = null
                 }
                 mTextUpdated = true
             }

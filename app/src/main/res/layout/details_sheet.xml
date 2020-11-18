@@ -14,7 +14,7 @@
     android:layout_marginEnd="12dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     app:cardElevation="16dp"
-    android:clickable="true"
+    android:descendantFocusability="blocksDescendants"
     app:rippleColor="@android:color/transparent"
     android:id="@+id/card"
     app:cardCornerRadius="12dp"
@@ -25,15 +25,13 @@
     android:theme="@style/ThemeOverlay.AppTheme.Detail"
     android:id="@+id/parent"
     android:orientation="vertical"
-    bind:layout_behavior="@string/bottom_sheet_behavior"
+    app:layout_behavior="@string/bottom_sheet_behavior"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:gravity="center_vertical"
-
     android:id="@+id/title"
-    bind:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="56dp">
@@ -42,38 +40,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        bind:layout_constraintGuide_begin="16dp" />
+        app:layout_constraintGuide_begin="16dp" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        bind:layout_constraintGuide_end="16dp" />
+        app:layout_constraintGuide_end="16dp" />
     <ImageView
-        bind:layout_constraintStart_toStartOf="@id/guideline_start"
-        bind:layout_constraintTop_toTopOf="parent"
-        bind:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:src="@drawable/ic_baseline_keyboard_arrow_up"
         android:id="@+id/arrow_up"
         android:layout_width="24dp"
         android:layout_height="24dp"/>
     <com.piyush.nasapictures.ui.widget.FadeInFadeOutTextView
-        bind:layout_constraintStart_toEndOf="@id/arrow_up"
-        bind:layout_constraintTop_toTopOf="parent"
-        bind:layout_constraintBottom_toBottomOf="parent"
-        bind:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toEndOf="@id/arrow_up"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
         android:layout_marginStart="16dp"
         style="@style/AutoScrollText"
         android:fontFamily="sans-serif-medium"
         android:textAppearance="@style/TextAppearance.Material.Body1"
         android:textColor="?android:textColorPrimary"
-        textToAnimate="@{photo.title}"
+        app:textToAnimate="@{photo.title}"
         android:layout_gravity="center"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"/>
     <View
-        bind:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/divider"
         android:background="#1affffff"
         android:layout_width="match_parent"
@@ -94,33 +92,33 @@
     <com.piyush.nasapictures.ui.widget.InfoView
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"
-        bind:label="@string/copyright"
-        bind:value="@{photo.copyright}"
+        app:label="@string/copyright"
+        app:value="@{photo.copyright}"
         android:layout_height="wrap_content"/>
     <com.piyush.nasapictures.ui.widget.InfoView
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
-        bind:label="@string/date"
-        bind:value="@{photo.date}"
+        app:label="@string/date"
+        app:value="@{photo.date}"
         android:layout_height="wrap_content"/>
     <com.piyush.nasapictures.ui.widget.InfoView
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
-        bind:label="@string/explanation"
-        bind:value="@{photo.explanation}"
+        app:label="@string/explanation"
+        app:value="@{photo.explanation}"
         android:layout_height="wrap_content"/>
     <com.piyush.nasapictures.ui.widget.InfoView
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
-        bind:label="@string/media_type"
-        bind:value="@{photo.mediaType}"
+        app:label="@string/media_type"
+        app:value="@{photo.mediaType}"
         android:layout_height="wrap_content"/>
     <com.piyush.nasapictures.ui.widget.InfoView
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:layout_width="match_parent"
-        bind:label="@string/service_version"
-        bind:value="@{photo.serviceVersion}"
+        app:label="@string/service_version"
+        app:value="@{photo.serviceVersion}"
         android:layout_height="wrap_content"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
